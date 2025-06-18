@@ -13,14 +13,14 @@ services:
       - db_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "5441:5432"
+      - "5007:5432"
 
   backend:
     build: ./Backend
     container_name: asset_backend
     restart: always
     ports:
-      - "3011:3011"
+      - "3007:3007"
     depends_on:
       - postgres
 
@@ -28,7 +28,7 @@ services:
     build: ./Employee-Asset
     container_name: asset_employee
     ports:
-      - "9017:80"
+      - "7015:80"
     depends_on:
       - backend
 
@@ -36,7 +36,7 @@ services:
     build: ./HR-Asset
     container_name: asset_hr
     ports:
-      - "9018:80"
+      - "7016:80"
     depends_on:
       - backend
 
